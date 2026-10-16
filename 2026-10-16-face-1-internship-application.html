@@ -52,8 +52,9 @@ input.inline.short{width:150px}
 .avoid-break{page-break-inside:avoid;break-inside:avoid}
 @media (max-width:640px){#doc{padding:24px 18px}.logo{width:60px;height:60px}.head h1{font-size:19px}.head h1.boxed{font-size:26px}.grid{grid-template-columns:1fr!important}input.inline{width:100%}}
 </style>
-<!-- html2pdf bundles html2canvas + jsPDF: renders this page to a PDF in the browser -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<!-- html2canvas renders the form to an image; jsPDF lays it out as PDF pages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 <form id="doc" autocomplete="on">
@@ -212,6 +213,116 @@ function validate(){
   return ok;
 }
 
+/* ===== PDF: render the form at desktop width, then cut pages only between lines/blocks ===== */
+const PDF = { pageW: 215.9, pageH: 279.4, margin: [10, 10, 12, 10] }; // US Letter in mm; margin = top, right, bottom, left
+
+// Logos: html2canvas drops inline SVGs (and SVG images when scaled), so swap each logo for a PNG of itself
+document.querySelectorAll("#doc svg").forEach(svg => {
+  const size = 480, copy = svg.cloneNode(true);
+  copy.setAttribute("width", size); copy.setAttribute("height", size);
+  const src = new Image();
+  src.onload = () => {
+    const c = document.createElement("canvas");
+    c.width = c.height = size;
+    c.getContext("2d").drawImage(src, 0, 0, size, size);
+    const img = document.createElement("img");
+    img.src = c.toDataURL("image/png");
+    img.className = svg.getAttribute("class") || "";
+    img.alt = svg.getAttribute("aria-label") || "";
+    svg.replaceWith(img);
+  };
+  src.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(copy));
+});
+
+// In the copy html2canvas renders: text inputs become plain wrapping text (inputs clip long values)
+// and underlines become borders (html2canvas draws underlines through the text)
+function preparePdfClone(doc, root){
+  root.style.boxShadow = "none";
+  root.querySelectorAll("*").forEach(el => {
+    if(!doc.defaultView.getComputedStyle(el).textDecorationLine.includes("underline")) return;
+    if(el.parentElement && doc.defaultView.getComputedStyle(el.parentElement).textDecorationLine.includes("underline")) return;
+    const span = doc.createElement("span");
+    span.style.cssText = "text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px";
+    while(el.firstChild) span.appendChild(el.firstChild);
+    el.style.textDecoration = "none";
+    el.appendChild(span);
+  });
+  root.querySelectorAll('input[type=text], input[type=email], input[type=tel], input[type=date], textarea').forEach(el => {
+    const r = el.getBoundingClientRect(), cs = doc.defaultView.getComputedStyle(el), d = doc.createElement("div");
+    d.textContent = el.value;
+    Object.assign(d.style, {
+      display: cs.display.startsWith("inline") ? "inline-block" : "block", boxSizing: "border-box",
+      width: r.width + "px", minHeight: r.height + "px", flex: "none", padding: cs.padding, borderBottom: cs.borderBottom,
+      fontFamily: cs.fontFamily, fontSize: cs.fontSize, fontStyle: cs.fontStyle, fontWeight: cs.fontWeight,
+      lineHeight: "1.3", color: cs.color, whiteSpace: "pre-wrap", overflowWrap: "anywhere", textAlign: "left", verticalAlign: "bottom"
+    });
+    el.replaceWith(d);
+  });
+}
+
+// Vertical ranges (CSS px from the top of the form) that a page break must not cut through
+function unbreakableRanges(doc, root){
+  const top0 = root.getBoundingClientRect().top, out = [];
+  const add = (t, b) => { if(b > t) out.push([t - top0, b - top0]); };
+  const walker = doc.createTreeWalker(root, NodeFilter.SHOW_TEXT), range = doc.createRange();
+  for(let n; (n = walker.nextNode()); ){             // every rendered line of text
+    if(!n.nodeValue.trim()) continue;
+    range.selectNodeContents(n);
+    for(const r of range.getClientRects()) add(r.top, r.bottom);
+  }
+  root.querySelectorAll("img, canvas, input, .head, .bar, .grid, .row, .choices, .sig-block, .sig-pad, .foot")
+    .forEach(el => { const r = el.getBoundingClientRect(); add(r.top, r.bottom); });
+  root.querySelectorAll("h1, h2, h3, .bar")          // keep headings with the line that follows
+    .forEach(el => { const r = el.getBoundingClientRect(); add(r.top, r.bottom + 48); });
+  return out;
+}
+
+async function renderPdf(){
+  let ranges = [], docWidth = 0;
+  const canvas = await html2canvas(document.getElementById("doc"), {
+    scale: 2, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0,
+    windowWidth: 1000,                                 // same layout on phones and desktops
+    onclone: doc => {
+      const root = doc.getElementById("doc");
+      preparePdfClone(doc, root);
+      docWidth = root.getBoundingClientRect().width;
+      ranges = unbreakableRanges(doc, root);
+    }
+  });
+  const [mt, mr, mb, ml] = PDF.margin, innerW = PDF.pageW - ml - mr, innerH = PDF.pageH - mt - mb;
+  const s = canvas.width / docWidth, total = canvas.height / s, pageCss = docWidth * innerH / innerW;
+
+  // page breaks: as low as possible on each page, moved up above anything they would slice
+  const breaks = [0];
+  while(total - breaks[breaks.length - 1] > pageCss){
+    const start = breaks[breaks.length - 1];
+    let cut = start + pageCss;
+    for(let moved = true; moved; ){
+      moved = false;
+      for(const [t, b] of ranges) if(t < cut && b > cut && t > start + 1){ cut = t - 1; moved = true; }
+    }
+    if(cut - start < pageCss * 0.25) cut = start + pageCss;   // one block taller than a page: slice it
+    breaks.push(cut);
+  }
+  breaks.push(total);
+
+  const pdf = new window.jspdf.jsPDF({ unit: "mm", format: "letter", orientation: "portrait" });
+  let pages = 0;
+  for(let i = 0; i < breaks.length - 1; i++){
+    const y0 = Math.round(breaks[i] * s), h = Math.round(breaks[i + 1] * s) - y0;
+    const hasContent = ranges.some(([t, b]) => b > breaks[i] && t < breaks[i + 1]);
+    if(h <= 0 || (pages && !hasContent)) continue;            // skip a trailing blank strip
+    const page = document.createElement("canvas");
+    page.width = canvas.width; page.height = h;
+    const ctx = page.getContext("2d");
+    ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, page.width, h);
+    ctx.drawImage(canvas, 0, y0, canvas.width, h, 0, 0, canvas.width, h);
+    if(pages++) pdf.addPage();
+    pdf.addImage(page.toDataURL("image/jpeg", 0.95), "JPEG", ml, mt, innerW, h * innerW / canvas.width);
+  }
+  return pdf.output("blob");
+}
+
 /* ===== Send: render the form to PDF and POST it (as base64) with the field values to the webhook ===== */
 async function sendDocument(e){
   e.preventDefault();
@@ -222,14 +333,7 @@ async function sendDocument(e){
   const scrollPos = window.scrollY;
   window.scrollTo(0, 0);
   try{
-    const pdfBlob = await html2pdf().set({
-      margin: [10,10,12,10],
-      filename,
-      image: { type: "jpeg", quality: 0.95 },
-      html2canvas: { scale: 2, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0 },
-      jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
-      pagebreak: { mode: ["css"], avoid: [".avoid-break", "li", "p", ".row", ".grid"] }
-    }).from(document.getElementById("doc")).outputPdf("blob");
+    const pdfBlob = await renderPdf();
     window.scrollTo(0, scrollPos);
 
     setStatus("Sending…");
