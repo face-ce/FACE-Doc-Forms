@@ -218,15 +218,19 @@ async function sendDocument(e){
   if(!validate()) return;
   btn.disabled = true; setStatus("Generating PDF…");
   const filename = `FACE_${DOC.id}_${slug(signerName())}_${today}.pdf`;
+  // html2canvas captures relative to the current scroll position: render from the top, then restore
+  const scrollPos = window.scrollY;
+  window.scrollTo(0, 0);
   try{
     const pdfBlob = await html2pdf().set({
       margin: [10,10,12,10],
       filename,
       image: { type: "jpeg", quality: 0.95 },
-      html2canvas: { scale: 2, backgroundColor: "#ffffff" },
+      html2canvas: { scale: 2, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0 },
       jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
       pagebreak: { mode: ["css"], avoid: [".avoid-break", "li", "p", ".row", ".grid"] }
     }).from(document.getElementById("doc")).outputPdf("blob");
+    window.scrollTo(0, scrollPos);
 
     setStatus("Sending…");
     // multipart/form-data text fields; the PDF itself goes as base64 in "pdf_base64"
