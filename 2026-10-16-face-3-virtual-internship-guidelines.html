@@ -176,7 +176,7 @@ function validate(){
   return ok;
 }
 
-/* ===== Send: render the form to PDF and POST the binary to the webhook ===== */
+/* ===== Send: render the form to PDF and POST it (as base64) with the field values to the webhook ===== */
 async function sendDocument(e){
   e.preventDefault();
   if(!validate()) return;
@@ -193,9 +193,8 @@ async function sendDocument(e){
     }).from(document.getElementById("doc")).outputPdf("blob");
 
     setStatus("Sending…");
-    // multipart/form-data: Make parses "file" as a binary bundle (data + fileName)
+    // multipart/form-data text fields; the PDF itself goes as base64 in "pdf_base64"
     const fd = new FormData();
-    fd.append("file", new File([pdfBlob], filename, { type: "application/pdf" }));
     fd.append("document_type", DOC.id);
     fd.append("document_title", DOC.title);
     fd.append("document_name", filename);
