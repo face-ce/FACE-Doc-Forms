@@ -193,6 +193,22 @@ function signerName(){
   return el ? el.value : "";
 }
 
+// first/last name: use separate First/Last fields when the form has them, otherwise split the signer's full name (last word = last name)
+function signerFirstLast(){
+  const f = document.querySelector('[name="applicant_first"]'), l = document.querySelector('[name="applicant_last"]');
+  if(f && l) return { first: f.value.trim(), last: l.value.trim() };
+  const parts = signerName().trim().split(/\s+/).filter(Boolean);
+  if(parts.length < 2) return { first: parts[0] || "", last: "" };
+  return { first: parts.slice(0, -1).join(" "), last: parts[parts.length - 1] };
+}
+// PDF blob -> plain base64 string (no "data:" prefix)
+const toBase64 = blob => new Promise((resolve, reject) => {
+  const r = new FileReader();
+  r.onload = () => resolve(String(r.result).split(",")[1]);
+  r.onerror = () => reject(r.error);
+  r.readAsDataURL(blob);
+});
+
 /* ===== Validation: required fields + required signatures ===== */
 function validate(){
   const form = document.getElementById("doc");
@@ -229,6 +245,10 @@ async function sendDocument(e){
     fd.append("document_title", DOC.title);
     fd.append("document_name", filename);
     fd.append("signer_name", signerName());
+    const name = signerFirstLast();
+    fd.append("first_name", name.first);
+    fd.append("last_name", name.last);
+    fd.append("pdf_base64", await toBase64(pdfBlob));
     fd.append("submitted_at", new Date().toISOString());
     // every form field by its name: checkbox groups joined with ", ", blank/unselected fields sent as ""
     const form = document.getElementById("doc"), fields = {};
