@@ -182,8 +182,14 @@ async function sendDocument(e){
     fd.append("file", new File([pdfBlob], filename, { type: "application/pdf" }));
     fd.append("document_type", DOC.id);
     fd.append("document_title", DOC.title);
+    fd.append("document_name", filename);
     fd.append("signer_name", signerName());
     fd.append("submitted_at", new Date().toISOString());
+    // every form field by its name: checkbox groups joined with ", ", blank/unselected fields sent as ""
+    const form = document.getElementById("doc"), fields = {};
+    form.querySelectorAll("input[name], textarea[name], select[name]").forEach(el => { fields[el.name] = fields[el.name] || []; });
+    new FormData(form).forEach((v, k) => fields[k].push(v));
+    Object.entries(fields).forEach(([k, v]) => { if(!fd.has(k)) fd.append(k, v.join(", ")); });
 
     const res = await fetch(WEBHOOK_URL, { method: "POST", body: fd });
     if(!res.ok) throw new Error("HTTP " + res.status);
