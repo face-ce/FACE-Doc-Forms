@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FACE – Confidentiality, Nondisclosure & IP Agreement (Intern/Volunteer)</title>
+<style>
+:root{--teal:#4a8a99;--bar:#a3c6cc;--ink:#1d1d1d;--muted:#666;--paper:#fff;--bg:#eef2f3;--navy:#1f4e8c}
+*{box-sizing:border-box}
+body{display:block;margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;padding:24px 16px}
+#doc{max-width:816px;margin:0 auto;background:var(--paper);padding:40px 56px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+.head h1{flex:1;text-align:center;font-weight:400;color:var(--teal);font-size:26px;margin:0}
+.head h1.boxed{background:#7aa8b2;color:#fff;display:inline-block;padding:4px 10px;font-size:40px}
+.head h1.navy{color:var(--navy);font-family:Georgia,serif;font-weight:700;font-size:18px;text-align:left}
+.logo{width:96px;height:96px;flex:none}
+.bar{background:var(--bar);color:#fff;text-align:center;padding:3px;margin:22px 0 14px;font-size:15px}
+.bar.dark{background:#7aa8b2;font-size:18px;padding:5px}
+h2{font-weight:400;text-decoration:underline;font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;text-decoration:underline;font-weight:400;margin:18px 0 6px}
+.legal{font-family:"Times New Roman",Times,serif;font-size:16px;line-height:1.4}
+.legal p{margin:0 0 12px}
+.legal li{margin-bottom:5px}
+.legal ol ol,.legal ol ul{margin-top:4px}
+.grid{display:grid;gap:10px 18px;margin-bottom:12px}
+.lbl{display:flex;flex-direction:column;font-size:13px;color:var(--muted);font-style:italic;gap:2px}
+.row{display:flex;align-items:flex-end;gap:10px;margin:10px 0;flex-wrap:wrap}
+.row>.k{font-size:15px;white-space:nowrap}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{font:inherit;font-style:normal;color:var(--ink);border:0;border-bottom:1px solid #333;background:transparent;padding:4px 2px;font-size:15px;outline:none;width:100%}
+input:focus,textarea:focus{border-bottom-color:var(--teal);background:#f3fafb}
+input.inline{display:inline-block;width:260px;font-family:inherit}
+input.inline.short{width:150px}
+.flex1{flex:1;min-width:180px}
+.choices{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.choices label{display:flex;align-items:center;gap:5px;font-size:15px}
+.req{color:#c0392b;font-style:normal}.opt{color:#999;font-style:normal;font-size:11px}
+.sig-section{margin-top:28px;border-top:2px solid var(--bar);padding-top:16px}
+.sig-section>h3{text-decoration:none;color:var(--teal);font-size:17px}
+.sig-block{display:grid;gap:10px;margin:14px 0 22px;max-width:440px}
+.sig-pad{position:relative;width:400px;max-width:100%;border:1px dashed #9bb;border-radius:4px;background:#fcfefe}
+.sig-pad canvas{display:block;width:100%;height:auto;aspect-ratio:800/260;touch-action:none;cursor:crosshair}
+.sig-label{position:absolute;top:4px;left:8px;font-size:12px;color:var(--muted);pointer-events:none}
+.sig-line{position:absolute;left:16px;right:16px;bottom:28px;border-bottom:1px solid #999;pointer-events:none}
+.sig-clear{position:absolute;top:4px;right:6px;font-size:12px;border:1px solid #ccc;background:#fff;border-radius:3px;padding:2px 8px;cursor:pointer}
+.sig-pad.invalid{border-color:#c0392b;background:#fff6f5}
+.foot{margin-top:28px;font-size:11px;color:var(--teal);border-top:3px solid #7fb3bd;padding-top:6px}
+.foot em{color:#333}
+.actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:32px;padding-top:20px;border-top:1px solid #dde5e7;width:100%;clear:both}
+.send{background:var(--teal);color:#fff;border:0;border-radius:4px;padding:12px 34px;font-size:16px;cursor:pointer}
+.send:disabled{opacity:.6;cursor:default}
+.status{font-size:14px}.status.ok{color:#1e7e34}.status.err{color:#c0392b}
+.avoid-break{page-break-inside:avoid;break-inside:avoid}
+@media (max-width:640px){#doc{padding:24px 18px}.logo{width:60px;height:60px}.head h1{font-size:19px}.head h1.boxed{font-size:26px}.grid{grid-template-columns:1fr!important}input.inline{width:100%}}
+</style>
+<!-- html2pdf bundles html2canvas + jsPDF: renders this page to a PDF in the browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<form id="doc" autocomplete="on">
+<div class="head"><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topciL" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botciL" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topciL" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botciL" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg><h1 class="boxed">Confidentiality</h1><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topciR" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botciR" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topciR" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botciR" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg></div>
+<div class="legal">
+<p>Maintaining confidentiality is of paramount importance in the work we do. Individuals phoning, visiting our website, or attending FACE Meet&amp;Greets often share highly sensitive personal information with our staff and they expect that we act in a professional manner by keeping that information confidential.</p>
+<p>Individuals and members of the organization can file legal suits against the organization if they feel that their private information has been revealed by the organization or its employees, volunteers, or interns. Aside from that, the organization can also suffer negative repercussions to our reputation. So it becomes very important for employees, volunteers, and interns to protect any information received from individuals who interact with FACE. This information is considered confidential and may include, but not limited to, oral, written, photographic, online, telephonic, text messages, emails, or any electronic communications.</p>
+<p>Families Advocating for Campus Equality (FACE) also works with policymakers, media representatives, and other members of the general public. Often the information discussed in our meetings is highly sensitive. If shared with others it could be detrimental to the positive outcome of the work we are doing.</p>
+<p>By keeping information confidential you will help the organization maintain a degree of professionalism that individuals, networking contacts, policymakers, media representatives, and FACE members deserve. In light of this, all interns/volunteers will be asked to sign the following Confidentiality, Nondisclosure, and Intellectual Property Agreement.</p>
+</div>
+<div class="bar dark">Confidentiality, Nondisclosure, and Intellectual Property Agreement</div>
+<div class="legal">
+<p>In consideration of being provided the opportunity of serving as a intern/volunteer for Families Advocating for Campus Equality, a 501(c)(3) nonprofit organization (“FACE”), and in consideration of FACE accepting me as a intern/volunteer in their organization, I, <input type="text" class="inline" name="signer_name" required data-sync="signer" placeholder="Full name">, (“Intern/Volunteer”) and FACE hereby agree as follows.</p>
+<h3>I. Proprietary Information</h3>
+<p>“FACE Information” means all information and materials provided by FACE or any of its affiliates to Intern/Volunteer, or to which Intern/Volunteer otherwise gains access as a result of interning or volunteering for FACE, pertaining in any manner to the activities of FACE or its affiliates, whether or not labeled or identified as proprietary, confidential, or personal. Without limiting the generality of the foregoing, the following are deemed FACE Information: (i) information regarding website data, business development, and products developed or distributed by FACE; (ii) ideas for research and development; (iii) computer records and software (including software that is proprietary to third parties); (iv) any information which FACE must keep confidential as a result of obligations to members, third parties, and those who participate in FACE activities or communicate with FACE for the purpose of providing or receiving support, advice, or any other service connected with FACE activities (participants); (v) product lines, slogans, inventions, discoveries, whether or not patentable; (vi) identities of customers, suppliers, members, participants, or third party contractors, including without limitation any media, advertising, or public relations firms; (vii) FACE’s e-mail distribution list to include newsletter subscribers; (viii) FACE’s donor, member or participant lists and the identities of FACE’s donors, members or participants; (ix) human resources data and information about employees; (x) cost and other financial data; and (xi) polling and focus group information.</p>
+<ol>
+<li>Intern/Volunteer agrees not to use or disclose any FACE Information, except to the extent such use or disclosure is required in providing services to or on behalf of FACE. Without limiting the generality of the foregoing, Intern/Volunteer agrees not to, without prior written consent from FACE, (i) divulge any FACE Information to third parties; or (ii) copy documents containing any FACE Information. In no event shall Intern/Volunteer use FACE Information in a manner that is in any way detrimental to FACE.</li>
+<li>Upon termination of his, her or their services to FACE, Intern/Volunteer shall within three business days return to FACE any and all written or other tangible materials containing any FACE Information in Intern’s/Volunteer’s possession and shall not keep any copies thereof.</li>
+<li>This section of this Agreement and Intern’s/Volunteer’s obligations here-under shall survive any expiration, termination, or rescission of this Agreement and remain even after Intern’s/Volunteer’s relationship with FACE ends. Except as provided herein, Intern/Volunteer is prohibited from disclosing or using any FACE Information in all circumstances, including but not limited to subsequent engagements or employment with third parties.</li>
+</ol>
+<h3>II. External Communications</h3>
+<ol><li>If Intern/Volunteer is contacted by a media representative, Intern/Volunteer shall attempt to refer the media representative to the Executive Director, Intern/Volunteer Coordinator, or Intern/Volunteer Supervisor of FACE. No Intern/Volunteer may communicate with media agents regarding FACE without prior authorization from the Executive Director or Intern/Volunteer Coordinator of FACE.</li>
+<li>If Intern/Volunteer is contacted by an outside attorney or investigator regarding FACE, Intern/Volunteer shall immediately obtain the individual’s name and telephone number without disclosing any information to the individual and then provide that information to the Executive Director, Intern/Volunteer Coordinator or Intern/Volunteer Supervisor of FACE.</li></ol>
+<h3>III. Intellectual Property</h3>
+<ol>
+<li>Intern/Volunteer agrees to promptly make full written disclosure to FACE, to hold in trust for the sole right and benefit of FACE, and hereby assigns to FACE, all right, title, and interest in and to any and all projects or activities while interning or volunteering, including original works of authorship, developments, concepts, improvements, designs, discoveries, ideas, trademarks or trade secrets, whether or not patentable or registrable under patent, copyright, trademark or similar laws, which Intern/Volunteer may solely or jointly conceive or develop or reduce to practice, or cause to be conceived or developed or reduced to practice, during the period of time Intern/Volunteer is in service to FACE.</li>
+<li>Intern/Volunteer further acknowledges that all original works of authorship which are made by Intern/Volunteer (solely or jointly with others) within the scope of and during the period of Intern’s/Volunteer’s participation with FACE and which are protectable by copyright are “works made for hire,” as that term is defined in the United States Copyright Act.</li>
+<li>Intern/Volunteer understands and agrees that the decision whether or not to commercialize or market any Product Line is within FACE’s sole discretion and for FACE’s sole benefit and that no royalty will be due to Intern/Volunteer as a result of FACE’s efforts to commercialize or market, or success in commercializing or marketing, any such Product.</li>
+<li>The provisions of this Agreement requiring assignment of Products for FACE shall not apply to any Product that Intern/Volunteer has developed entirely on Intern’s/Volunteer’s own time without using FACE’s intellectual property, equipment, supplies, facilities, or FACE Information except for those products that either (i) relate at the time of their conception or reduction to practice to the FACE’s business, or actual or anticipated research or development of FACE; or (ii) result from any work that Intern/Volunteer performed for FACE. Intern/Volunteer will advise FACE promptly in writing of any products that Intern/Volunteer believes meet the foregoing criteria.</li>
+<li>Intern/Volunteer agrees to assist FACE, or its designee, in every proper way to secure FACE’s intellectual property rights.</li>
+</ol>
+<h3>IV. Remedies</h3>
+<p>Intern/Volunteer acknowledges that a violation of the terms of this Agreement may cause damage and harm to FACE and that any such damage or harm will be difficult if not impossible to calculate in monetary terms and may be irreparable to FACE. Intern/Volunteer agrees that, upon notice from FACE declaring a breach of this Agreement, Intern/Volunteer shall immediately cease all further activities which are, or are claimed by FACE to be, a breach of this Agreement and shall immediately return to FACE any and all written or other tangible material containing any FACE Information in Intern’s/Volunteer’s possession and shall not keep any copies thereof. FACE may also avail itself of any other remedies available by law.</p>
+<h3>V. Governing Law</h3>
+<p>This agreement will be governed by the laws of the state of Ohio without regard to its conflicts of laws principles.</p>
+<h3>VI. Consent to Personal Jurisdiction</h3>
+<p>Intern/Volunteer hereby expressly consents to the personal jurisdiction of the state and federal courts located in the state of Ohio for any lawsuit filed there against Intern/Volunteer by FACE concerning Intern’s and Volunteer’s participation or the termination of Intern’s/Volunteer’s participation or arising from or relating to this Agreement.</p>
+<h3>VII. Severability</h3>
+<p>If any part of this Agreement shall be held unenforceable, the rest of the Agreement will nevertheless remain in full force and effect.</p>
+<p>Intern/Volunteer acknowledges and agrees to each of the following items:</p>
+<ol>
+<li>(i) I am executing this agreement voluntarily and without any duress or undue influences by Families Advocating for Campus Equality or anyone else.</li>
+<li>(ii) I have carefully read this agreement. I have had the opportunity to ask any questions needed for me to understand the terms, consequences and binding effect of this agreement, and fully understand them.</li>
+<li>(iii) I sought the advice of an attorney of my choice if I wanted to before signing this agreement.</li>
+</ol>
+</div>
+<div class="sig-section">
+  <div class="sig-block avoid-break">
+    <label class="lbl">Intern/Volunteer Name Print <span class="req">*</span>
+      <input type="text" name="signer_print_name" required data-sync="signer" autocomplete="name"></label>
+    <div class="sig-pad" data-key="signer" data-required="true" data-label="Intern/Volunteer Signature">
+      <div class="sig-label">Intern/Volunteer Signature <span class="req">*</span></div>
+      <canvas width="800" height="260"></canvas>
+      <div class="sig-line"></div>
+      <button type="button" class="sig-clear" data-html2canvas-ignore="true">Clear</button>
+    </div>
+    <label class="lbl">Date <span class="req">*</span>
+      <input type="date" name="signer_date" class="autodate" required></label>
+  </div>
+  <div class="sig-block avoid-break">
+    <label class="lbl">Witness Name Print <span class="opt">(optional)</span>
+      <input type="text" name="witness_print_name"  autocomplete="name"></label>
+    <div class="sig-pad" data-key="witness" data-required="false" data-label="Witness Signature">
+      <div class="sig-label">Witness Signature <span class="opt">(optional)</span></div>
+      <canvas width="800" height="260"></canvas>
+      <div class="sig-line"></div>
+      <button type="button" class="sig-clear" data-html2canvas-ignore="true">Clear</button>
+    </div>
+    <label class="lbl">Date <span class="opt">(optional)</span>
+      <input type="date" name="witness_date" class="autodate" ></label>
+  </div>
+</div>
+<div class="foot">FACE: Families Advocating for Campus Equality. CONFIDENTIALITY, NONDISCLOSURE, IP AGREEMENT</div>
+<!-- Send bar lives inside the form (always at the bottom); ignored when rendering the PDF -->
+<div class="actions" data-html2canvas-ignore="true">
+  <button type="submit" id="sendBtn" class="send">Send</button>
+  <span id="status" class="status"></span>
+</div>
+</form>
+<script>
+/* ===== Config ===== */
+const WEBHOOK_URL = "https://hook.us2.make.com/krs2os29gojtfe1a3s5jwjm3biemmtkp";               // Make.com custom webhook
+const DOC = { id: "cnda_intern_volunteer", title: "Confidentiality, Nondisclosure & IP Agreement (Intern/Volunteer)" }; // identifies which form was sent
+
+/* ===== Auto-fill today's date in every date field ===== */
+const today = new Date().toISOString().slice(0,10);
+document.querySelectorAll("input.autodate").forEach(i => { if(!i.value) i.value = today; });
+
+/* ===== Keep fields with the same data-sync key mirrored (e.g. the signer's name) ===== */
+document.querySelectorAll("[data-sync]").forEach(el => {
+  el.addEventListener("input", () => {
+    document.querySelectorAll(`[data-sync="${el.dataset.sync}"]`).forEach(o => { if(o !== el) o.value = el.value; });
+  });
+});
+
+/* ===== Signature pads (mouse, pen and touch) ===== */
+document.querySelectorAll(".sig-pad").forEach(pad => {
+  const c = pad.querySelector("canvas"), ctx = c.getContext("2d");
+  ctx.lineWidth = 4; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#0b2a5b";
+  let drawing = false;
+  pad.dataset.signed = "false";
+  // convert screen coordinates to canvas pixel coordinates
+  const pos = e => { const r = c.getBoundingClientRect(); return { x:(e.clientX-r.left)*c.width/r.width, y:(e.clientY-r.top)*c.height/r.height }; };
+  c.addEventListener("pointerdown", e => { drawing = true; c.setPointerCapture(e.pointerId); const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
+  c.addEventListener("pointermove", e => { if(!drawing) return; const p = pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); pad.dataset.signed = "true"; pad.classList.remove("invalid"); });
+  const stop = () => { drawing = false; };
+  c.addEventListener("pointerup", stop); c.addEventListener("pointercancel", stop);
+  pad.querySelector(".sig-clear").addEventListener("click", () => { ctx.clearRect(0,0,c.width,c.height); pad.dataset.signed = "false"; });
+});
+
+/* ===== Helpers ===== */
+const statusEl = document.getElementById("status"), btn = document.getElementById("sendBtn");
+const setStatus = (msg, cls="") => { statusEl.textContent = msg; statusEl.className = "status " + cls; };
+const slug = s => (s || "unsigned").trim().replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "");
+function signerName(){
+  const el = document.querySelector('[data-sync="signer"]') || document.querySelector('input[name$="_print_name"]');
+  return el ? el.value : "";
+}
+
+/* ===== Validation: required fields + required signatures ===== */
+function validate(){
+  const form = document.getElementById("doc");
+  if(!form.reportValidity()) return false;
+  let ok = true;
+  document.querySelectorAll('.sig-pad[data-required="true"]').forEach(p => {
+    if(p.dataset.signed !== "true"){ p.classList.add("invalid"); ok = false; }
+  });
+  if(!ok){ setStatus("Please sign in the highlighted signature box.", "err"); document.querySelector(".sig-pad.invalid").scrollIntoView({behavior:"smooth",block:"center"}); }
+  return ok;
+}
+
+/* ===== Send: render the form to PDF and POST the binary to the webhook ===== */
+async function sendDocument(e){
+  e.preventDefault();
+  if(!validate()) return;
+  btn.disabled = true; setStatus("Generating PDF…");
+  const filename = `FACE_${DOC.id}_${slug(signerName())}_${today}.pdf`;
+  try{
+    const pdfBlob = await html2pdf().set({
+      margin: [10,10,12,10],
+      filename,
+      image: { type: "jpeg", quality: 0.95 },
+      html2canvas: { scale: 2, backgroundColor: "#ffffff" },
+      jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["css"], avoid: [".avoid-break", "li", "p", ".row", ".grid"] }
+    }).from(document.getElementById("doc")).outputPdf("blob");
+
+    setStatus("Sending…");
+    // multipart/form-data: Make parses "file" as a binary bundle (data + fileName)
+    const fd = new FormData();
+    fd.append("file", new File([pdfBlob], filename, { type: "application/pdf" }));
+    fd.append("document_type", DOC.id);
+    fd.append("document_title", DOC.title);
+    fd.append("signer_name", signerName());
+    fd.append("submitted_at", new Date().toISOString());
+
+    const res = await fetch(WEBHOOK_URL, { method: "POST", body: fd });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    setStatus("✓ Sent successfully. You can close this page.", "ok");
+    btn.textContent = "Sent";
+  }catch(err){
+    console.error(err);
+    setStatus("Could not send (" + err.message + "). Please try again.", "err");
+    btn.disabled = false;
+  }
+}
+document.getElementById("doc").addEventListener("submit", sendDocument);
+</script>
+</body>
+</html>

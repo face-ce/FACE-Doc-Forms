@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FACE – FACE Network Participant Nondisclosure Agreement</title>
+<style>
+:root{--teal:#4a8a99;--bar:#a3c6cc;--ink:#1d1d1d;--muted:#666;--paper:#fff;--bg:#eef2f3;--navy:#1f4e8c}
+*{box-sizing:border-box}
+body{display:block;margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;padding:24px 16px}
+#doc{max-width:816px;margin:0 auto;background:var(--paper);padding:40px 56px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+.head h1{flex:1;text-align:center;font-weight:400;color:var(--teal);font-size:26px;margin:0}
+.head h1.boxed{background:#7aa8b2;color:#fff;display:inline-block;padding:4px 10px;font-size:40px}
+.head h1.navy{color:var(--navy);font-family:Georgia,serif;font-weight:700;font-size:18px;text-align:left}
+.logo{width:96px;height:96px;flex:none}
+.bar{background:var(--bar);color:#fff;text-align:center;padding:3px;margin:22px 0 14px;font-size:15px}
+.bar.dark{background:#7aa8b2;font-size:18px;padding:5px}
+h2{font-weight:400;text-decoration:underline;font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;text-decoration:underline;font-weight:400;margin:18px 0 6px}
+.legal{font-family:"Times New Roman",Times,serif;font-size:16px;line-height:1.4}
+.legal p{margin:0 0 12px}
+.legal li{margin-bottom:5px}
+.legal ol ol,.legal ol ul{margin-top:4px}
+.grid{display:grid;gap:10px 18px;margin-bottom:12px}
+.lbl{display:flex;flex-direction:column;font-size:13px;color:var(--muted);font-style:italic;gap:2px}
+.row{display:flex;align-items:flex-end;gap:10px;margin:10px 0;flex-wrap:wrap}
+.row>.k{font-size:15px;white-space:nowrap}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{font:inherit;font-style:normal;color:var(--ink);border:0;border-bottom:1px solid #333;background:transparent;padding:4px 2px;font-size:15px;outline:none;width:100%}
+input:focus,textarea:focus{border-bottom-color:var(--teal);background:#f3fafb}
+input.inline{display:inline-block;width:260px;font-family:inherit}
+input.inline.short{width:150px}
+.flex1{flex:1;min-width:180px}
+.choices{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.choices label{display:flex;align-items:center;gap:5px;font-size:15px}
+.req{color:#c0392b;font-style:normal}.opt{color:#999;font-style:normal;font-size:11px}
+.sig-section{margin-top:28px;border-top:2px solid var(--bar);padding-top:16px}
+.sig-section>h3{text-decoration:none;color:var(--teal);font-size:17px}
+.sig-block{display:grid;gap:10px;margin:14px 0 22px;max-width:440px}
+.sig-pad{position:relative;width:400px;max-width:100%;border:1px dashed #9bb;border-radius:4px;background:#fcfefe}
+.sig-pad canvas{display:block;width:100%;height:auto;aspect-ratio:800/260;touch-action:none;cursor:crosshair}
+.sig-label{position:absolute;top:4px;left:8px;font-size:12px;color:var(--muted);pointer-events:none}
+.sig-line{position:absolute;left:16px;right:16px;bottom:28px;border-bottom:1px solid #999;pointer-events:none}
+.sig-clear{position:absolute;top:4px;right:6px;font-size:12px;border:1px solid #ccc;background:#fff;border-radius:3px;padding:2px 8px;cursor:pointer}
+.sig-pad.invalid{border-color:#c0392b;background:#fff6f5}
+.foot{margin-top:28px;font-size:11px;color:var(--teal);border-top:3px solid #7fb3bd;padding-top:6px}
+.foot em{color:#333}
+.actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:32px;padding-top:20px;border-top:1px solid #dde5e7;width:100%;clear:both}
+.send{background:var(--teal);color:#fff;border:0;border-radius:4px;padding:12px 34px;font-size:16px;cursor:pointer}
+.send:disabled{opacity:.6;cursor:default}
+.status{font-size:14px}.status.ok{color:#1e7e34}.status.err{color:#c0392b}
+.avoid-break{page-break-inside:avoid;break-inside:avoid}
+@media (max-width:640px){#doc{padding:24px 18px}.logo{width:60px;height:60px}.head h1{font-size:19px}.head h1.boxed{font-size:26px}.grid{grid-template-columns:1fr!important}input.inline{width:100%}}
+</style>
+<!-- html2pdf bundles html2canvas + jsPDF: renders this page to a PDF in the browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<form id="doc" autocomplete="on">
+<div class="head"><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topnetL" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botnetL" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topnetL" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botnetL" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg><h1 class="navy">FACE NETWORK PARTICIPANT NONDISCLOSURE AGREEMENT</h1></div>
+<div style="border-top:4px solid #7fb3bd;margin:-8px 0 18px"></div>
+<div class="legal" style="font-family:Arial,Helvetica,sans-serif;font-size:14.5px">
+<p>Families Advocating for Campus Equality (FACE) values the importance, and makes every effort to ensure nondisclosure of <em>Confidential Information</em><sup>1</sup> received from persons who have contacted, been referred to or communicated with FACE <em>Representatives</em> for the purpose of support, advocacy or other FACE services. This Nondisclosure Agreement (Agreement) is entered into by and between Families Advocating for Campus Equality (FACE) as a nonprofit entity, and <input type="text" class="inline" name="applicant_name" required data-sync="signer" placeholder="Full name"> (<em>Applicant</em>), who has requested the permission to participate in the FACE <em>Private Network</em>, as defined below. The purpose of this Agreement is to confirm that those who wish to participate in the FACE <em>Private Network</em> commit to nondisclosure of any <em>Confidential Information</em>, as defined below, acquired through that participation.</p>
+<p><b>The following definitions apply to this entire Agreement:</b></p>
+<ol>
+<li><b>FACE <em>Representative</em>:</b> FACE executive officers, directors, board members, and part-time or full-time employees, volunteers, and interns.</li>
+<li><b>FACE <em>Participant</em>:</b> persons who have contacted, been referred to, or volunteered on behalf of FACE, or otherwise participated in or benefited from FACE activities, or communicated with FACE <em>Representatives</em> or <em>Participants</em> for the purpose of providing or receiving advice, support, advocacy, or any other services connected with FACE activities and its <em>Private Network</em>.</li>
+<li><b>FACE <em>Private Network</em>:</b> any FACE-administered method or other activity facilitating communication or contact between and among FACE <em>Participants</em> and/or FACE <em>Representatives,</em> which conveys <em>Confidential Information</em>, including, but not limited to, in-person, online or telephonic meetings, and other electronic formats such video conferences, emails, text messages, or online forums.</li>
+<li><b><em>Confidential Information</em>:</b> any information, whether or not it has been identified as "personal” or “confidential," communicated, provided or disclosed by any FACE <em>Participant</em> or <em>Representative</em> in the context of a FACE <em>Private Network</em> shall be presumed confidential and disclosure prohibited.
+  <ol type="a">
+  <li><em>Confidential Information</em> may include, but is not limited to:
+    <ol><li>Oral, written, online, telephonic, visual, or electronic communications, text messages and emails;</li>
+    <li>Names of persons, schools and cities, photographic images, locations, and any other factual or personally identifiable information;</li>
+    <li>Information related to FACE’s conduct of business including not otherwise disclosed financial and strategic information, and internal communications.</li></ol></li>
+  <li><em>Confidential Information</em> does not include information which has been:
+    <ol><li>Publicly known at the time of disclosure or became publicly known through no action(s) attributable to <em>Applicant</em>;</li>
+    <li>Discovered or learned by through legitimate, alternative means, other than from a FACE <em>Private Network, Participant, or Representative</em>; or</li>
+    <li>Divulged by a FACE <em>Participant or Representative</em> with express prior written approval of the FACE <em>Participant or Representative</em> who disclosed the information.</li></ol></li>
+  </ol></li>
+</ol>
+<p><b>In accordance with the terms of this Agreement:</b></p>
+<ol>
+<li><em>Applicant</em> agrees to maintain the confidentiality of all <em>Confidential Information</em>, unless and until one of the conditions in Section 4.b. above has been satisfied.</li>
+<li>In the event of a FACE <em>Participant’s</em> failure to comply with this Agreement, FACE reserves the right to terminate that FACE <em>Participant’s</em> access to all FACE <em>Private Networks</em>.</li>
+<li><em>Applicant</em> acknowledges that FACE and FACE <em>representatives</em> are not responsible for disclosure of <em>Confidential Information</em> by other FACE <em>Participants;</em> the ability to ensure nondisclosure of <em>Confidential Information</em> by any person(s) is limited to that communicated to or received by FACE <em>Representatives</em>.</li>
+<li>If a court finds any provision of this Agreement invalid or unenforceable, the remainder of this Agreement shall be interpreted so as best to effect the intent of the parties.</li>
+<li>This Agreement expresses the complete understanding of the parties and supersedes any prior agreements or representations, and may not be amended except in writing by both parties</li>
+<li>The failure to exercise any right provided in this Agreement shall not constitute a waiver of prior or subsequent rights.</li>
+<li><em>Applicant</em> acknowledges that a violation of the terms of this Agreement may cause damage and harm to FACE, FACE <em>Participants, or</em> FACE <em>Representatives</em> and that any such damage or harm will be difficult if not impossible to calculate in monetary terms and may be irreparable to FACE. <em>Applicant</em> agrees that, upon notice from FACE declaring a breach of this Agreement, <em>Applicant</em> shall immediately cease all further activities which are, or are claimed by FACE to be, a breach of this Agreement and shall immediately return to FACE any and all written or other tangible material containing any FACE Information in <em>Applicant</em>’s possession and shall not keep any copies thereof. FACE may also avail itself of any other remedies available by law.</li>
+<li>This Agreement will be governed by the laws of the state of Ohio without regard to its conflicts of laws principles.</li>
+<li><em>Applicant</em> hereby expressly consents to the personal jurisdiction of the state and federal courts located in the state of Ohio for any lawsuit filed there against <em>Applicant</em> by FACE concerning <em>Applicant</em>’s participation or the termination of <em>Applicant</em>’s participation or arising from or relating to this Agreement.</li>
+</ol>
+<p><em>Applicant</em> acknowledges and agrees to each of the following items:</p>
+<ol>
+<li>(i) I am executing this Agreement voluntarily and without any duress or undue influence by Families Advocating for Campus Equality or anyone else.</li>
+<li>(ii) I have carefully read this agreement. I have had the opportunity to ask any questions needed for me to understand the terms, consequences and binding effect of this agreement, and fully understand them.</li>
+<li>(iii) I am aware of my right to seek legal advice from an attorney of my choice prior to signing this agreement.</li>
+</ol>
+<p style="font-size:12px;border-top:1px solid #333;padding-top:4px;width:40%">&nbsp;</p>
+<p style="font-size:12px"><sup>1</sup> All italicized references are to be interpreted in accordance with the Agreement’s definitions that follow.</p>
+</div>
+<div class="sig-section">
+  <div class="sig-block avoid-break">
+    <label class="lbl">Applicant Print Name <span class="req">*</span>
+      <input type="text" name="applicant_print_name" required data-sync="signer" autocomplete="name"></label>
+    <div class="sig-pad" data-key="applicant" data-required="true" data-label="Applicant Signature">
+      <div class="sig-label">Applicant Signature <span class="req">*</span></div>
+      <canvas width="800" height="260"></canvas>
+      <div class="sig-line"></div>
+      <button type="button" class="sig-clear" data-html2canvas-ignore="true">Clear</button>
+    </div>
+    <label class="lbl">Date <span class="req">*</span>
+      <input type="date" name="applicant_date" class="autodate" required></label>
+  </div>
+</div>
+<div class="foot">FACE NETWORK PARTICIPANT NONDISCLOSURE AGREEMENT. <em>October 2024</em><br><em>Our mission is to provide support, guidance, and informational resources to individuals accused of serious misconduct in educational institutions, ensuring they understand their rights and have the tools to navigate challenging proceedings with dignity and resilience.</em></div>
+<!-- Send bar lives inside the form (always at the bottom); ignored when rendering the PDF -->
+<div class="actions" data-html2canvas-ignore="true">
+  <button type="submit" id="sendBtn" class="send">Send</button>
+  <span id="status" class="status"></span>
+</div>
+</form>
+<script>
+/* ===== Config ===== */
+const WEBHOOK_URL = "https://hook.us2.make.com/krs2os29gojtfe1a3s5jwjm3biemmtkp";               // Make.com custom webhook
+const DOC = { id: "network_participant_nda", title: "FACE Network Participant Nondisclosure Agreement" }; // identifies which form was sent
+
+/* ===== Auto-fill today's date in every date field ===== */
+const today = new Date().toISOString().slice(0,10);
+document.querySelectorAll("input.autodate").forEach(i => { if(!i.value) i.value = today; });
+
+/* ===== Keep fields with the same data-sync key mirrored (e.g. the signer's name) ===== */
+document.querySelectorAll("[data-sync]").forEach(el => {
+  el.addEventListener("input", () => {
+    document.querySelectorAll(`[data-sync="${el.dataset.sync}"]`).forEach(o => { if(o !== el) o.value = el.value; });
+  });
+});
+
+/* ===== Signature pads (mouse, pen and touch) ===== */
+document.querySelectorAll(".sig-pad").forEach(pad => {
+  const c = pad.querySelector("canvas"), ctx = c.getContext("2d");
+  ctx.lineWidth = 4; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#0b2a5b";
+  let drawing = false;
+  pad.dataset.signed = "false";
+  // convert screen coordinates to canvas pixel coordinates
+  const pos = e => { const r = c.getBoundingClientRect(); return { x:(e.clientX-r.left)*c.width/r.width, y:(e.clientY-r.top)*c.height/r.height }; };
+  c.addEventListener("pointerdown", e => { drawing = true; c.setPointerCapture(e.pointerId); const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
+  c.addEventListener("pointermove", e => { if(!drawing) return; const p = pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); pad.dataset.signed = "true"; pad.classList.remove("invalid"); });
+  const stop = () => { drawing = false; };
+  c.addEventListener("pointerup", stop); c.addEventListener("pointercancel", stop);
+  pad.querySelector(".sig-clear").addEventListener("click", () => { ctx.clearRect(0,0,c.width,c.height); pad.dataset.signed = "false"; });
+});
+
+/* ===== Helpers ===== */
+const statusEl = document.getElementById("status"), btn = document.getElementById("sendBtn");
+const setStatus = (msg, cls="") => { statusEl.textContent = msg; statusEl.className = "status " + cls; };
+const slug = s => (s || "unsigned").trim().replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "");
+function signerName(){
+  const el = document.querySelector('[data-sync="signer"]') || document.querySelector('input[name$="_print_name"]');
+  return el ? el.value : "";
+}
+
+/* ===== Validation: required fields + required signatures ===== */
+function validate(){
+  const form = document.getElementById("doc");
+  if(!form.reportValidity()) return false;
+  let ok = true;
+  document.querySelectorAll('.sig-pad[data-required="true"]').forEach(p => {
+    if(p.dataset.signed !== "true"){ p.classList.add("invalid"); ok = false; }
+  });
+  if(!ok){ setStatus("Please sign in the highlighted signature box.", "err"); document.querySelector(".sig-pad.invalid").scrollIntoView({behavior:"smooth",block:"center"}); }
+  return ok;
+}
+
+/* ===== Send: render the form to PDF and POST the binary to the webhook ===== */
+async function sendDocument(e){
+  e.preventDefault();
+  if(!validate()) return;
+  btn.disabled = true; setStatus("Generating PDF…");
+  const filename = `FACE_${DOC.id}_${slug(signerName())}_${today}.pdf`;
+  try{
+    const pdfBlob = await html2pdf().set({
+      margin: [10,10,12,10],
+      filename,
+      image: { type: "jpeg", quality: 0.95 },
+      html2canvas: { scale: 2, backgroundColor: "#ffffff" },
+      jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["css"], avoid: [".avoid-break", "li", "p", ".row", ".grid"] }
+    }).from(document.getElementById("doc")).outputPdf("blob");
+
+    setStatus("Sending…");
+    // multipart/form-data: Make parses "file" as a binary bundle (data + fileName)
+    const fd = new FormData();
+    fd.append("file", new File([pdfBlob], filename, { type: "application/pdf" }));
+    fd.append("document_type", DOC.id);
+    fd.append("document_title", DOC.title);
+    fd.append("signer_name", signerName());
+    fd.append("submitted_at", new Date().toISOString());
+
+    const res = await fetch(WEBHOOK_URL, { method: "POST", body: fd });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    setStatus("✓ Sent successfully. You can close this page.", "ok");
+    btn.textContent = "Sent";
+  }catch(err){
+    console.error(err);
+    setStatus("Could not send (" + err.message + "). Please try again.", "err");
+    btn.disabled = false;
+  }
+}
+document.getElementById("doc").addEventListener("submit", sendDocument);
+</script>
+</body>
+</html>

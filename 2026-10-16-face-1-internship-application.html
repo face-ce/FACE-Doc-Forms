@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FACE – Internship/Volunteer Application</title>
+<style>
+:root{--teal:#4a8a99;--bar:#a3c6cc;--ink:#1d1d1d;--muted:#666;--paper:#fff;--bg:#eef2f3;--navy:#1f4e8c}
+*{box-sizing:border-box}
+body{display:block;margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;padding:24px 16px}
+#doc{max-width:816px;margin:0 auto;background:var(--paper);padding:40px 56px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+.head h1{flex:1;text-align:center;font-weight:400;color:var(--teal);font-size:26px;margin:0}
+.head h1.boxed{background:#7aa8b2;color:#fff;display:inline-block;padding:4px 10px;font-size:40px}
+.head h1.navy{color:var(--navy);font-family:Georgia,serif;font-weight:700;font-size:18px;text-align:left}
+.logo{width:96px;height:96px;flex:none}
+.bar{background:var(--bar);color:#fff;text-align:center;padding:3px;margin:22px 0 14px;font-size:15px}
+.bar.dark{background:#7aa8b2;font-size:18px;padding:5px}
+h2{font-weight:400;text-decoration:underline;font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;text-decoration:underline;font-weight:400;margin:18px 0 6px}
+.legal{font-family:"Times New Roman",Times,serif;font-size:16px;line-height:1.4}
+.legal p{margin:0 0 12px}
+.legal li{margin-bottom:5px}
+.legal ol ol,.legal ol ul{margin-top:4px}
+.grid{display:grid;gap:10px 18px;margin-bottom:12px}
+.lbl{display:flex;flex-direction:column;font-size:13px;color:var(--muted);font-style:italic;gap:2px}
+.row{display:flex;align-items:flex-end;gap:10px;margin:10px 0;flex-wrap:wrap}
+.row>.k{font-size:15px;white-space:nowrap}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{font:inherit;font-style:normal;color:var(--ink);border:0;border-bottom:1px solid #333;background:transparent;padding:4px 2px;font-size:15px;outline:none;width:100%}
+input:focus,textarea:focus{border-bottom-color:var(--teal);background:#f3fafb}
+input.inline{display:inline-block;width:260px;font-family:inherit}
+input.inline.short{width:150px}
+.flex1{flex:1;min-width:180px}
+.choices{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.choices label{display:flex;align-items:center;gap:5px;font-size:15px}
+.req{color:#c0392b;font-style:normal}.opt{color:#999;font-style:normal;font-size:11px}
+.sig-section{margin-top:28px;border-top:2px solid var(--bar);padding-top:16px}
+.sig-section>h3{text-decoration:none;color:var(--teal);font-size:17px}
+.sig-block{display:grid;gap:10px;margin:14px 0 22px;max-width:440px}
+.sig-pad{position:relative;width:400px;max-width:100%;border:1px dashed #9bb;border-radius:4px;background:#fcfefe}
+.sig-pad canvas{display:block;width:100%;height:auto;aspect-ratio:800/260;touch-action:none;cursor:crosshair}
+.sig-label{position:absolute;top:4px;left:8px;font-size:12px;color:var(--muted);pointer-events:none}
+.sig-line{position:absolute;left:16px;right:16px;bottom:28px;border-bottom:1px solid #999;pointer-events:none}
+.sig-clear{position:absolute;top:4px;right:6px;font-size:12px;border:1px solid #ccc;background:#fff;border-radius:3px;padding:2px 8px;cursor:pointer}
+.sig-pad.invalid{border-color:#c0392b;background:#fff6f5}
+.foot{margin-top:28px;font-size:11px;color:var(--teal);border-top:3px solid #7fb3bd;padding-top:6px}
+.foot em{color:#333}
+.actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:32px;padding-top:20px;border-top:1px solid #dde5e7;width:100%;clear:both}
+.send{background:var(--teal);color:#fff;border:0;border-radius:4px;padding:12px 34px;font-size:16px;cursor:pointer}
+.send:disabled{opacity:.6;cursor:default}
+.status{font-size:14px}.status.ok{color:#1e7e34}.status.err{color:#c0392b}
+.avoid-break{page-break-inside:avoid;break-inside:avoid}
+@media (max-width:640px){#doc{padding:24px 18px}.logo{width:60px;height:60px}.head h1{font-size:19px}.head h1.boxed{font-size:26px}.grid{grid-template-columns:1fr!important}input.inline{width:100%}}
+</style>
+<!-- html2pdf bundles html2canvas + jsPDF: renders this page to a PDF in the browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<form id="doc" autocomplete="on">
+<div class="head"><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topappL" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botappL" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topappL" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botappL" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg><h1 class="">Internship/Volunteer Application and Personal Information</h1><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topappR" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botappR" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topappR" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botappR" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg></div>
+<div class="bar">Personal Information</div>
+<div class="row"><span class="k">NAME:</span></div>
+<div class="grid" style="grid-template-columns:2fr 2fr 1fr">
+  <label class="lbl"><input type="text" name="applicant_last" required autocomplete="family-name">Last</label>
+  <label class="lbl"><input type="text" name="applicant_first" required autocomplete="given-name">First</label>
+  <label class="lbl"><input type="text" name="applicant_mi" maxlength="2">M.I.</label>
+</div>
+<div class="row"><span class="k">ADDRESS:</span></div>
+<div class="grid" style="grid-template-columns:3fr 2fr 1fr 1fr">
+  <label class="lbl"><input type="text" name="applicant_street" required>Street Address</label>
+  <label class="lbl"><input type="text" name="applicant_city" required>City</label>
+  <label class="lbl"><input type="text" name="applicant_state" required maxlength="20">State</label>
+  <label class="lbl"><input type="text" name="applicant_zip" required maxlength="10">ZIP Code</label>
+</div>
+<div class="row"><span class="k">PHONE: <em>Cell</em></span><input class="flex1" type="tel" name="applicant_phone_cell" required><span class="k"><em>Alternate</em></span><input class="flex1" type="tel" name="applicant_phone_alt"></div>
+<div class="row"><span class="k">EMAIL ADDRESS:</span><input class="flex1" type="email" name="applicant_email" required></div>
+<div class="bar">Intern/Volunteer Information</div>
+<div class="row"><span class="k">Are you an international student? (<em>Circle one</em>)</span>
+  <div class="choices"><label><input type="radio" name="international_student" value="YES" required> YES</label><label><input type="radio" name="international_student" value="NO"> NO</label></div></div>
+<div class="row"><span class="k">Are you receiving credits through your school for this internship program? (<em>Circle one</em>)</span>
+  <div class="choices"><label><input type="radio" name="receiving_credits" value="YES" required> YES</label><label><input type="radio" name="receiving_credits" value="NO"> NO</label></div></div>
+<div class="row"><span class="k">If so, what college/university?</span><input class="flex1" type="text" name="college_university"></div>
+<div class="row"><span class="k">Intern or Volunteer (<em>Circle one</em>)?</span>
+  <div class="choices"><label><input type="radio" name="role" value="Intern" required> Intern</label><label><input type="radio" name="role" value="Volunteer"> Volunteer</label></div>
+  <span class="k">Position Title:</span><input class="flex1" type="text" name="position_title"></div>
+<div class="row"><span class="k">Days Available (<em>Circle all that apply</em>):</span><div class="choices"><label><input type="checkbox" name="days_available" value="Monday"> Monday</label><label><input type="checkbox" name="days_available" value="Tuesday"> Tuesday</label><label><input type="checkbox" name="days_available" value="Wednesday"> Wednesday</label><label><input type="checkbox" name="days_available" value="Thursday"> Thursday</label><label><input type="checkbox" name="days_available" value="Friday"> Friday</label></div></div>
+<div class="row"><span class="k">Hours available for work or scheduled meetings:</span><input class="flex1" type="text" name="hours_available"></div>
+<div class="bar">Emergency Contact Information</div>
+<div class="row"><span class="k">NAME:</span></div>
+<div class="grid" style="grid-template-columns:2fr 2fr 1fr">
+  <label class="lbl"><input type="text" name="emergency_last" required autocomplete="family-name">Last</label>
+  <label class="lbl"><input type="text" name="emergency_first" required autocomplete="given-name">First</label>
+  <label class="lbl"><input type="text" name="emergency_mi" maxlength="2">M.I.</label>
+</div>
+<div class="row"><span class="k">ADDRESS:</span></div>
+<div class="grid" style="grid-template-columns:3fr 2fr 1fr 1fr">
+  <label class="lbl"><input type="text" name="emergency_street" required>Street Address</label>
+  <label class="lbl"><input type="text" name="emergency_city" required>City</label>
+  <label class="lbl"><input type="text" name="emergency_state" required maxlength="20">State</label>
+  <label class="lbl"><input type="text" name="emergency_zip" required maxlength="10">ZIP Code</label>
+</div>
+<div class="row"><span class="k">PHONE: <em>Cell</em></span><input class="flex1" type="tel" name="emergency_phone_cell" required><span class="k"><em>Alternate</em></span><input class="flex1" type="tel" name="emergency_phone_alt"></div>
+<div class="row"><span class="k">EMAIL ADDRESS:</span><input class="flex1" type="email" name="emergency_email" required></div>
+<div class="row"><span class="k">RELATIONSHIP:</span><input class="flex1" type="text" name="emergency_relationship" required></div>
+<div class="sig-section">
+  <h3>Applicant Certification &amp; Signature</h3>
+  <p class="legal">I certify that the information provided in this application is true and complete to the best of my knowledge.</p>
+  <div class="sig-block avoid-break">
+    <label class="lbl">Print Name <span class="req">*</span>
+      <input type="text" name="applicant_print_name" required data-sync="signer" autocomplete="name"></label>
+    <div class="sig-pad" data-key="applicant" data-required="true" data-label="Applicant Signature">
+      <div class="sig-label">Applicant Signature <span class="req">*</span></div>
+      <canvas width="800" height="260"></canvas>
+      <div class="sig-line"></div>
+      <button type="button" class="sig-clear" data-html2canvas-ignore="true">Clear</button>
+    </div>
+    <label class="lbl">Date <span class="req">*</span>
+      <input type="date" name="applicant_date" class="autodate" required></label>
+  </div>
+</div>
+<!-- Send bar lives inside the form (always at the bottom); ignored when rendering the PDF -->
+<div class="actions" data-html2canvas-ignore="true">
+  <button type="submit" id="sendBtn" class="send">Send</button>
+  <span id="status" class="status"></span>
+</div>
+</form>
+<script>
+/* ===== Config ===== */
+const WEBHOOK_URL = "https://hook.us2.make.com/krs2os29gojtfe1a3s5jwjm3biemmtkp";               // Make.com custom webhook
+const DOC = { id: "internship_application", title: "Internship/Volunteer Application" }; // identifies which form was sent
+
+/* ===== Auto-fill today's date in every date field ===== */
+const today = new Date().toISOString().slice(0,10);
+document.querySelectorAll("input.autodate").forEach(i => { if(!i.value) i.value = today; });
+
+/* ===== Keep fields with the same data-sync key mirrored (e.g. the signer's name) ===== */
+document.querySelectorAll("[data-sync]").forEach(el => {
+  el.addEventListener("input", () => {
+    document.querySelectorAll(`[data-sync="${el.dataset.sync}"]`).forEach(o => { if(o !== el) o.value = el.value; });
+  });
+});
+
+/* ===== Signature pads (mouse, pen and touch) ===== */
+document.querySelectorAll(".sig-pad").forEach(pad => {
+  const c = pad.querySelector("canvas"), ctx = c.getContext("2d");
+  ctx.lineWidth = 4; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#0b2a5b";
+  let drawing = false;
+  pad.dataset.signed = "false";
+  // convert screen coordinates to canvas pixel coordinates
+  const pos = e => { const r = c.getBoundingClientRect(); return { x:(e.clientX-r.left)*c.width/r.width, y:(e.clientY-r.top)*c.height/r.height }; };
+  c.addEventListener("pointerdown", e => { drawing = true; c.setPointerCapture(e.pointerId); const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
+  c.addEventListener("pointermove", e => { if(!drawing) return; const p = pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); pad.dataset.signed = "true"; pad.classList.remove("invalid"); });
+  const stop = () => { drawing = false; };
+  c.addEventListener("pointerup", stop); c.addEventListener("pointercancel", stop);
+  pad.querySelector(".sig-clear").addEventListener("click", () => { ctx.clearRect(0,0,c.width,c.height); pad.dataset.signed = "false"; });
+});
+
+/* ===== Helpers ===== */
+const statusEl = document.getElementById("status"), btn = document.getElementById("sendBtn");
+const setStatus = (msg, cls="") => { statusEl.textContent = msg; statusEl.className = "status " + cls; };
+const slug = s => (s || "unsigned").trim().replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "");
+function signerName(){
+  const el = document.querySelector('[data-sync="signer"]') || document.querySelector('input[name$="_print_name"]');
+  return el ? el.value : "";
+}
+
+/* ===== Validation: required fields + required signatures ===== */
+function validate(){
+  const form = document.getElementById("doc");
+  if(!form.reportValidity()) return false;
+  let ok = true;
+  document.querySelectorAll('.sig-pad[data-required="true"]').forEach(p => {
+    if(p.dataset.signed !== "true"){ p.classList.add("invalid"); ok = false; }
+  });
+  if(!ok){ setStatus("Please sign in the highlighted signature box.", "err"); document.querySelector(".sig-pad.invalid").scrollIntoView({behavior:"smooth",block:"center"}); }
+  return ok;
+}
+
+/* ===== Send: render the form to PDF and POST the binary to the webhook ===== */
+async function sendDocument(e){
+  e.preventDefault();
+  if(!validate()) return;
+  btn.disabled = true; setStatus("Generating PDF…");
+  const filename = `FACE_${DOC.id}_${slug(signerName())}_${today}.pdf`;
+  try{
+    const pdfBlob = await html2pdf().set({
+      margin: [10,10,12,10],
+      filename,
+      image: { type: "jpeg", quality: 0.95 },
+      html2canvas: { scale: 2, backgroundColor: "#ffffff" },
+      jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["css"], avoid: [".avoid-break", "li", "p", ".row", ".grid"] }
+    }).from(document.getElementById("doc")).outputPdf("blob");
+
+    setStatus("Sending…");
+    // multipart/form-data: Make parses "file" as a binary bundle (data + fileName)
+    const fd = new FormData();
+    fd.append("file", new File([pdfBlob], filename, { type: "application/pdf" }));
+    fd.append("document_type", DOC.id);
+    fd.append("document_title", DOC.title);
+    fd.append("signer_name", signerName());
+    fd.append("submitted_at", new Date().toISOString());
+
+    const res = await fetch(WEBHOOK_URL, { method: "POST", body: fd });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    setStatus("✓ Sent successfully. You can close this page.", "ok");
+    btn.textContent = "Sent";
+  }catch(err){
+    console.error(err);
+    setStatus("Could not send (" + err.message + "). Please try again.", "err");
+    btn.disabled = false;
+  }
+}
+document.getElementById("doc").addEventListener("submit", sendDocument);
+</script>
+</body>
+</html>

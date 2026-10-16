@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FACE – Internship Agreement</title>
+<style>
+:root{--teal:#4a8a99;--bar:#a3c6cc;--ink:#1d1d1d;--muted:#666;--paper:#fff;--bg:#eef2f3;--navy:#1f4e8c}
+*{box-sizing:border-box}
+body{display:block;margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;padding:24px 16px}
+#doc{max-width:816px;margin:0 auto;background:var(--paper);padding:40px 56px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+.head h1{flex:1;text-align:center;font-weight:400;color:var(--teal);font-size:26px;margin:0}
+.head h1.boxed{background:#7aa8b2;color:#fff;display:inline-block;padding:4px 10px;font-size:40px}
+.head h1.navy{color:var(--navy);font-family:Georgia,serif;font-weight:700;font-size:18px;text-align:left}
+.logo{width:96px;height:96px;flex:none}
+.bar{background:var(--bar);color:#fff;text-align:center;padding:3px;margin:22px 0 14px;font-size:15px}
+.bar.dark{background:#7aa8b2;font-size:18px;padding:5px}
+h2{font-weight:400;text-decoration:underline;font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;text-decoration:underline;font-weight:400;margin:18px 0 6px}
+.legal{font-family:"Times New Roman",Times,serif;font-size:16px;line-height:1.4}
+.legal p{margin:0 0 12px}
+.legal li{margin-bottom:5px}
+.legal ol ol,.legal ol ul{margin-top:4px}
+.grid{display:grid;gap:10px 18px;margin-bottom:12px}
+.lbl{display:flex;flex-direction:column;font-size:13px;color:var(--muted);font-style:italic;gap:2px}
+.row{display:flex;align-items:flex-end;gap:10px;margin:10px 0;flex-wrap:wrap}
+.row>.k{font-size:15px;white-space:nowrap}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{font:inherit;font-style:normal;color:var(--ink);border:0;border-bottom:1px solid #333;background:transparent;padding:4px 2px;font-size:15px;outline:none;width:100%}
+input:focus,textarea:focus{border-bottom-color:var(--teal);background:#f3fafb}
+input.inline{display:inline-block;width:260px;font-family:inherit}
+input.inline.short{width:150px}
+.flex1{flex:1;min-width:180px}
+.choices{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.choices label{display:flex;align-items:center;gap:5px;font-size:15px}
+.req{color:#c0392b;font-style:normal}.opt{color:#999;font-style:normal;font-size:11px}
+.sig-section{margin-top:28px;border-top:2px solid var(--bar);padding-top:16px}
+.sig-section>h3{text-decoration:none;color:var(--teal);font-size:17px}
+.sig-block{display:grid;gap:10px;margin:14px 0 22px;max-width:440px}
+.sig-pad{position:relative;width:400px;max-width:100%;border:1px dashed #9bb;border-radius:4px;background:#fcfefe}
+.sig-pad canvas{display:block;width:100%;height:auto;aspect-ratio:800/260;touch-action:none;cursor:crosshair}
+.sig-label{position:absolute;top:4px;left:8px;font-size:12px;color:var(--muted);pointer-events:none}
+.sig-line{position:absolute;left:16px;right:16px;bottom:28px;border-bottom:1px solid #999;pointer-events:none}
+.sig-clear{position:absolute;top:4px;right:6px;font-size:12px;border:1px solid #ccc;background:#fff;border-radius:3px;padding:2px 8px;cursor:pointer}
+.sig-pad.invalid{border-color:#c0392b;background:#fff6f5}
+.foot{margin-top:28px;font-size:11px;color:var(--teal);border-top:3px solid #7fb3bd;padding-top:6px}
+.foot em{color:#333}
+.actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:32px;padding-top:20px;border-top:1px solid #dde5e7;width:100%;clear:both}
+.send{background:var(--teal);color:#fff;border:0;border-radius:4px;padding:12px 34px;font-size:16px;cursor:pointer}
+.send:disabled{opacity:.6;cursor:default}
+.status{font-size:14px}.status.ok{color:#1e7e34}.status.err{color:#c0392b}
+.avoid-break{page-break-inside:avoid;break-inside:avoid}
+@media (max-width:640px){#doc{padding:24px 18px}.logo{width:60px;height:60px}.head h1{font-size:19px}.head h1.boxed{font-size:26px}.grid{grid-template-columns:1fr!important}input.inline{width:100%}}
+</style>
+<!-- html2pdf bundles html2canvas + jsPDF: renders this page to a PDF in the browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<form id="doc" autocomplete="on">
+<div class="head"><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topagrL" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botagrL" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topagrL" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botagrL" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg><h1 class="">INTERNSHIP AGREEMENT</h1><svg class="logo" viewBox="0 0 120 120" aria-label="FACE logo">
+  <defs>
+    <path id="topagrR" d="M 18 60 A 42 42 0 0 1 102 60"/>
+    <path id="botagrR" d="M 14 60 A 46 46 0 0 0 106 60"/>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="none" stroke="#3d5a80" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="38" fill="none" stroke="#3d5a80" stroke-width="0.8"/>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#topagrR" startOffset="50%" text-anchor="middle">FAMILIES ADVOCATING</textPath></text>
+  <text font-family="Times New Roman,serif" font-size="9" fill="#3d5a80" letter-spacing="1"><textPath href="#botagrR" startOffset="50%" text-anchor="middle">FOR CAMPUS EQUALITY</textPath></text>
+  <text x="60" y="66" text-anchor="middle" font-family="Times New Roman,serif" font-size="19" fill="#4aa3b5" letter-spacing="2">FACE.</text>
+</svg></div>
+<div class="row"><span class="k" style="font-size:17px">Prepared For: <span class="req">*</span></span><input class="flex1" type="text" name="prepared_for" required data-sync="signer"></div>
+<div class="row"><span class="k" style="font-size:17px">Prepared By:</span><span class="legal">&nbsp;&nbsp;FACE: Families Advocating for Campus Equality</span></div>
+<div class="legal">
+<h2>PURPOSE OF THE INTERNSHIP</h2>
+<p>The purpose of this unpaid internship program is to assist the intern with gaining work experience. While participating in ongoing projects and activities related to the everyday work of FACE, the intern will be provided with conditions for work experience and professional development during the length of the internship.</p>
+<p>An Internship with Families Advocating for Campus Equality gives individuals the opportunity to combine the knowledge acquired from school with real hands-on work experience. Interns can make new connections, gain confidence, and add to their resume.</p>
+<h2>CONDITIONS OF THE INTERNSHIP</h2>
+<ul>
+<li>This internship is aimed toward the intern’s professional development.</li>
+<li>The Intern will receive guidance from their immediate supervisor and will be assigned tasks aimed at the development of the intern’s skills and qualifications related to the regular work that is done at FACE.</li>
+<li>The internship is related to work experience and there is no guarantee or expectation that the experience gained by the intern will secure subsequent employment with FACE upon completion of the internship.</li>
+<li>The Intern does not replace or displace any employee of the organization.</li>
+<li>The Intern will receive direct supervision by a supervisor.</li>
+<li>The organization does not derive an advantage from the activities performed by the Intern.</li>
+<li>The internship starts on <input type="date" class="inline short" name="internship_start" required> and ends on <input type="date" class="inline short" name="internship_end" required>.</li>
+</ul>
+<h2>PAY, COMPENSATION, AND INSURANCE</h2>
+<ul>
+<li>This is an unpaid internship. Interns are not entitled to wages or any compensation or benefits for the time spent in the internship.</li>
+<li>The intern is not entitled to insurance coverage and FACE is not liable to any health conditions and injuries that may arise for the unpaid intern during the internship period.</li>
+</ul>
+<h2>THE INTERN SPECIFICALLY AGREES TO AND ACKNOWLEDGES THE FOLLOWING:</h2>
+<ul>
+<li>The organization may at any time in its sole discretion, terminate an intern without notice or cause.</li>
+<li>Intern will maintain a regular internship schedule determined by the Intern and their supervisor.</li>
+<li>Intern must report regularly to the supervisor. If they are unable to report during the regular scheduled times, they need to notify their supervisor within 24 hours by telephone or email.</li>
+<li>Intern will abide by the terms and conditions in the No Call No Show Policy (if applicable) that will be provided to new interns.</li>
+<li>Intern will demonstrate honesty, punctuality, courtesy, cooperative attitude, and a willingness to work.</li>
+<li>Intern will adhere to the policies, rules, and regulations of Families Advocating for Campus Equality and comply with the organization’s business practices and procedures.</li>
+<li>Intern will furnish his/her supervisor with all necessary information pertaining to the unpaid internship, including related assignments and reports.</li>
+<li>Under no circumstances will Intern leave the internship without first conferring with Intern’s supervisor.</li>
+<li>Intern assumes all of the risks of participating in the internship program. In consideration of the opportunity afforded to the Intern to participate in the internship program.</li>
+<li>Intern hereby agrees that he/she, his/her assignees, heirs, guardians, and legal representatives, will not make a claim against FACE or any of its affiliated organizations, or either of their officers or directors collectively or individually, or any of its employees, for the injury or death to Intern or damage to his/her property, however caused, arising from his/her participation in the internship program. Without limiting the generality of the foregoing. Intern hereby waives and releases any rights, actions, or causes or action resulting from personal injury or death to him/ her, or damage to his/her property, sustained in connection with his/her participation in the internship program.</li>
+</ul>
+<h2>PLACE OF INTERNSHIP AND WORK ASSIGNMENTS</h2>
+<ul>
+<li>FACE offers a remote internship program.</li>
+<li>A reliable laptop or desktop computer, phone, and a stable internet connection is mandatory for this internship.</li>
+<li>The intern will receive work assignments from their supervisor.</li>
+</ul>
+<h2>INTELLECTUAL PROPERTY</h2>
+<p>The Intern agrees that any intellectual property provided to him/her by the Company (FACE) or created by the intern during the internship will remain the sole property of FACE including, but not limited to, copyrights, patents, trade secret rights, and other intellectual property rights associated with any ideas, concepts, techniques, graphics, and written materials.</p>
+<h2>CONFIDENTIALITY</h2>
+<p>All terms and conditions of this Agreement and any materials provided during the term of the Agreement must be kept confidential by the Intern, unless the disclosure is required pursuant to process of law.</p>
+<p>Disclosing or using this information for any purpose beyond the scope of this Agreement, or beyond the exceptions set forth above, is expressly forbidden without the prior consent of the Company.</p>
+<h2>THE RESPONSIBILITY OF THE INTERN</h2>
+<p>As an intern of FACE, you will be responsible for following all the company policies, including those that manage intellectual property and prohibit sharing of confidential and proprietary information, trade secrets, and data that the intern will gather and/or have access to during the term of the internship. (Additional provisions are provided in our nondisclosure agreement).</p>
+<ul>
+<li>Intern will maintain the internship schedule that was determined by the intern and their supervisor prior to the intern start date.</li>
+<li>Intern will inform the supervisor in case of any major changes to the regular internship schedule and/or to the tasks assigned to the intern for the duration of this agreement.</li>
+<li>Intern will reply to emails with an update on what stage of completion each task or project is in each week.</li>
+<li>During the last week of the internship, the intern will complete two End of the Internship projects; Letter for Future Interns and Donor Letter.</li>
+</ul>
+<h2>ACCEPTANCE STATEMENT AND SIGNATURES</h2>
+<p>If you have any questions about this agreement, please ask your direct supervisor prior to signing it. By signing this agreement, you are acknowledging that you have read and accepted all of the terms and conditions.</p>
+<p>Intern acknowledges and agrees to each of the following items</p>
+<ol>
+<li>(i) I am executing this agreement voluntarily and without any duress or undue influences by Families Advocating for Campus Equality or anyone else.</li>
+<li>(ii) I have carefully read this Intern Agreement. I have been given the opportunity to ask any questions needed for me to understand the terms, consequences, and binding effect of this agreement, and fully understand them.</li>
+<li>(iii) I sought the advice of an attorney of my choice if I wanted to before signing this agreement.</li>
+</ol>
+</div>
+<div class="sig-section">
+  <div class="sig-block avoid-break">
+    <label class="lbl">Intern Name Print <span class="req">*</span>
+      <input type="text" name="intern_print_name" required data-sync="signer" autocomplete="name"></label>
+    <div class="sig-pad" data-key="intern" data-required="true" data-label="Intern Signature">
+      <div class="sig-label">Intern Signature <span class="req">*</span></div>
+      <canvas width="800" height="260"></canvas>
+      <div class="sig-line"></div>
+      <button type="button" class="sig-clear" data-html2canvas-ignore="true">Clear</button>
+    </div>
+    <label class="lbl">Date <span class="req">*</span>
+      <input type="date" name="intern_date" class="autodate" required></label>
+  </div>
+  <div class="sig-block avoid-break">
+    <label class="lbl">Supervisor Name Print <span class="opt">(optional)</span>
+      <input type="text" name="supervisor_print_name"  autocomplete="name"></label>
+    <div class="sig-pad" data-key="supervisor" data-required="false" data-label="Supervisor Signature">
+      <div class="sig-label">Supervisor Signature <span class="opt">(optional)</span></div>
+      <canvas width="800" height="260"></canvas>
+      <div class="sig-line"></div>
+      <button type="button" class="sig-clear" data-html2canvas-ignore="true">Clear</button>
+    </div>
+    <label class="lbl">Date <span class="opt">(optional)</span>
+      <input type="date" name="supervisor_date" class="autodate" ></label>
+  </div>
+</div>
+<div class="foot">FACE: Families Advocating for Campus Equality. INTERNSHIP AGREEMENT</div>
+<!-- Send bar lives inside the form (always at the bottom); ignored when rendering the PDF -->
+<div class="actions" data-html2canvas-ignore="true">
+  <button type="submit" id="sendBtn" class="send">Send</button>
+  <span id="status" class="status"></span>
+</div>
+</form>
+<script>
+/* ===== Config ===== */
+const WEBHOOK_URL = "https://hook.us2.make.com/krs2os29gojtfe1a3s5jwjm3biemmtkp";               // Make.com custom webhook
+const DOC = { id: "internship_agreement", title: "Internship Agreement" }; // identifies which form was sent
+
+/* ===== Auto-fill today's date in every date field ===== */
+const today = new Date().toISOString().slice(0,10);
+document.querySelectorAll("input.autodate").forEach(i => { if(!i.value) i.value = today; });
+
+/* ===== Keep fields with the same data-sync key mirrored (e.g. the signer's name) ===== */
+document.querySelectorAll("[data-sync]").forEach(el => {
+  el.addEventListener("input", () => {
+    document.querySelectorAll(`[data-sync="${el.dataset.sync}"]`).forEach(o => { if(o !== el) o.value = el.value; });
+  });
+});
+
+/* ===== Signature pads (mouse, pen and touch) ===== */
+document.querySelectorAll(".sig-pad").forEach(pad => {
+  const c = pad.querySelector("canvas"), ctx = c.getContext("2d");
+  ctx.lineWidth = 4; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#0b2a5b";
+  let drawing = false;
+  pad.dataset.signed = "false";
+  // convert screen coordinates to canvas pixel coordinates
+  const pos = e => { const r = c.getBoundingClientRect(); return { x:(e.clientX-r.left)*c.width/r.width, y:(e.clientY-r.top)*c.height/r.height }; };
+  c.addEventListener("pointerdown", e => { drawing = true; c.setPointerCapture(e.pointerId); const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
+  c.addEventListener("pointermove", e => { if(!drawing) return; const p = pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); pad.dataset.signed = "true"; pad.classList.remove("invalid"); });
+  const stop = () => { drawing = false; };
+  c.addEventListener("pointerup", stop); c.addEventListener("pointercancel", stop);
+  pad.querySelector(".sig-clear").addEventListener("click", () => { ctx.clearRect(0,0,c.width,c.height); pad.dataset.signed = "false"; });
+});
+
+/* ===== Helpers ===== */
+const statusEl = document.getElementById("status"), btn = document.getElementById("sendBtn");
+const setStatus = (msg, cls="") => { statusEl.textContent = msg; statusEl.className = "status " + cls; };
+const slug = s => (s || "unsigned").trim().replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "");
+function signerName(){
+  const el = document.querySelector('[data-sync="signer"]') || document.querySelector('input[name$="_print_name"]');
+  return el ? el.value : "";
+}
+
+/* ===== Validation: required fields + required signatures ===== */
+function validate(){
+  const form = document.getElementById("doc");
+  if(!form.reportValidity()) return false;
+  let ok = true;
+  document.querySelectorAll('.sig-pad[data-required="true"]').forEach(p => {
+    if(p.dataset.signed !== "true"){ p.classList.add("invalid"); ok = false; }
+  });
+  if(!ok){ setStatus("Please sign in the highlighted signature box.", "err"); document.querySelector(".sig-pad.invalid").scrollIntoView({behavior:"smooth",block:"center"}); }
+  return ok;
+}
+
+/* ===== Send: render the form to PDF and POST the binary to the webhook ===== */
+async function sendDocument(e){
+  e.preventDefault();
+  if(!validate()) return;
+  btn.disabled = true; setStatus("Generating PDF…");
+  const filename = `FACE_${DOC.id}_${slug(signerName())}_${today}.pdf`;
+  try{
+    const pdfBlob = await html2pdf().set({
+      margin: [10,10,12,10],
+      filename,
+      image: { type: "jpeg", quality: 0.95 },
+      html2canvas: { scale: 2, backgroundColor: "#ffffff" },
+      jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["css"], avoid: [".avoid-break", "li", "p", ".row", ".grid"] }
+    }).from(document.getElementById("doc")).outputPdf("blob");
+
+    setStatus("Sending…");
+    // multipart/form-data: Make parses "file" as a binary bundle (data + fileName)
+    const fd = new FormData();
+    fd.append("file", new File([pdfBlob], filename, { type: "application/pdf" }));
+    fd.append("document_type", DOC.id);
+    fd.append("document_title", DOC.title);
+    fd.append("signer_name", signerName());
+    fd.append("submitted_at", new Date().toISOString());
+
+    const res = await fetch(WEBHOOK_URL, { method: "POST", body: fd });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    setStatus("✓ Sent successfully. You can close this page.", "ok");
+    btn.textContent = "Sent";
+  }catch(err){
+    console.error(err);
+    setStatus("Could not send (" + err.message + "). Please try again.", "err");
+    btn.disabled = false;
+  }
+}
+document.getElementById("doc").addEventListener("submit", sendDocument);
+</script>
+</body>
+</html>
